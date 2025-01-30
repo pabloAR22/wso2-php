@@ -148,7 +148,7 @@ class AuthController extends Controller
     {
         try {
             $token = $this->getManagementAccessToken();
-            $userId = $this->validateUserExists($request->user);
+            $userId = $this->validateUserExists($request->username);
 
             $client = new \GuzzleHttp\Client();
 
@@ -159,7 +159,7 @@ class AuthController extends Controller
                 ],
                 'json' => [
                     'type' => 'password',
-                    'value' => $request->new_password,
+                    'value' => $request->password,
                     'temporary' => false,
                 ],
                 'verify' => false,
